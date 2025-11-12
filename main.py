@@ -20,7 +20,7 @@ SIZES = ["XS", "S", "M", "L", "XL", "XXL"]
 # -------------------------
 # Generate Dummy Data
 # -------------------------
-def generate_dummy_ecommerce_data(n_rows=1000000):
+def generate_dummy_ecommerce_data(n_rows=100000):
     """Generate a realistic dummy fashion ecommerce dataset."""
     data = []
     for i in range(n_rows):
@@ -67,7 +67,7 @@ if os.path.exists(PARQUET_PATH):
     df = pd.read_parquet(PARQUET_PATH)
 else:
     st.sidebar.warning("⚠️ No Parquet file found — generating dummy data...")
-    df = generate_dummy_ecommerce_data(1000000)
+    df = generate_dummy_ecommerce_data(100000)
     df.to_parquet(PARQUET_PATH, index=False, compression='snappy')
     st.sidebar.info("💾 Dummy data saved as Parquet for next run.")
 
